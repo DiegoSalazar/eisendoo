@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'list/index'
+
   resources :contexts
 
   resources :todos do

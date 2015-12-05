@@ -1,14 +1,24 @@
-<p id="notice"><%= notice %></p>
+<div id="contexts" class="container-fluid main">
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @context.name %>
-</p>
+  <div class="col-lg-12">
+    <%= form_for Todo.new, html: { class: "form-inline" } do |f| %>
+      <div class="form-group">
+        <%= f.text_field :body, class: "form-control auto-expand", 
+                                placeholder: "Add a new todo",
+                                required: true %>
+      </div>
 
-<p>
-  <strong>Main:</strong>
-  <%= @context.main %>
-</p>
+      <%= f.submit "Add", class: "btn btn-default" %>
+    <% end %>
+  </div>
 
-<%= link_to 'Edit', edit_context_path(@context) %> |
-<%= link_to 'Back', contexts_path %>
+  <section class="col-sm-6">
+    <%= render @context.get_main_quadrants %>
+  </section>
+
+  <section class="col-sm-6">
+    <%= render @context.get_side_quadrants %>
+  </section>
+
+</div>

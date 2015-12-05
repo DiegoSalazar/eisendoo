@@ -1,0 +1,23 @@
+<h1>Listing quadrants</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @quadrants.each do |quadrant| %>
+      <tr>
+        <td><%= link_to 'Show', quadrant %></td>
+        <td><%= link_to 'Edit', edit_quadrant_path(quadrant) %></td>
+        <td><%= link_to 'Destroy', quadrant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Quadrant', new_quadrant_path %>

@@ -1,28 +1,22 @@
 class ContextsController < ApplicationController
-  before_action :set_context, only: [:show, :edit, :update, :destroy]
+  DEFAULT_CONTEXT_NAME = "personal"
+  before_action :set_context, only: [:edit, :update, :destroy]
 
-  # GET /contexts
-  # GET /contexts.json
   def index
     @contexts = Context.all
   end
 
-  # GET /contexts/1
-  # GET /contexts/1.json
   def show
+    @context = Context.find_by_name params.fetch(:name, DEFAULT_CONTEXT_NAME)
   end
 
-  # GET /contexts/new
   def new
     @context = Context.new
   end
 
-  # GET /contexts/1/edit
   def edit
   end
 
-  # POST /contexts
-  # POST /contexts.json
   def create
     @context = Context.new(context_params)
 
@@ -37,8 +31,6 @@ class ContextsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /contexts/1
-  # PATCH/PUT /contexts/1.json
   def update
     respond_to do |format|
       if @context.update(context_params)
@@ -51,8 +43,6 @@ class ContextsController < ApplicationController
     end
   end
 
-  # DELETE /contexts/1
-  # DELETE /contexts/1.json
   def destroy
     @context.destroy
     respond_to do |format|

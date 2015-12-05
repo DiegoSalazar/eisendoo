@@ -5,6 +5,7 @@ class CreateQuadrants < ActiveRecord::Migration
       t.references :context, index: true
       t.integer :number
       t.string :name
+      t.string :heading
 
       t.timestamps
     end
